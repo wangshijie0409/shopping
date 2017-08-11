@@ -1,0 +1,41 @@
+ -D （--dev） 开发需要  -S (--save-dev) 开发上线都需要 也可以用yarn add 依赖模块 后面加dev就是开发需要 不加默认就是开发上线都学要
+先初始化 npm init
+
+webpack 相关
+npm install webpack webpack-dev-server -D
+
+babel 相关
+npm install babel-core babel-loader babel-preset-es2015 babel-preset-stage-0 babel-preset-react css-loader style-loader less less-loader html-webpack-plugin file-loader url-loader -D
+
+react 相关
+npm install react redux react-redux react-router-dom react-dom  -S
+
+bootstrap swiper -S
+
+
+
+fetch 相关为了防止浏览器不兼容 如果不兼容whatwg-fetch会将fetch转成ajax，es6-promise解决promise兼容问题
+ npm install es6-promise whatwg-fetch -D
+
+后台用express
+npm install express -S
+
+scripts启动命令相关--progress有进度条--port启动的端口号
+"start":"webpack-dev-server --port 3002 --open --progress --colors"
+
+"build":"webpack -p" 打包压缩文件
+
+目录结构
+ -app 我们要写的文件都在这里
+   -components 组件 傻瓜组件
+   -containers 页面组件或者自己的subpage目录下
+      -Home 首页文件夹
+         -subpage 只能组件
+         -index.js
+      -List 列表页文件夹
+      -MyCenter 个人中心文件夹
+      -ShoppingCar 购物车文件夹
+   -routers 文件夹定制了路由控制页面跳转
+
+
+下载之后切换under分支

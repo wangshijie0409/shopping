@@ -1,0 +1,33 @@
+.num {
+  display: flex;
+  flex-direction: column;
+}
+.num .one {
+  flex: 4;
+}
+.num .one div {
+  height: 40px;
+  border-bottom: 1px solid #cccccc;
+}
+.num .one div span:nth-child(1) {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 17px;
+}
+.num .one div span:nth-child(2) {
+  display: inline-block;
+  font-size: 17px;
+  padding-left: 30%;
+}
+.num .one img {
+  width: 80%;
+  margin-left: 10%;
+}
+.num .two {
+  flex: 5;
+}
+.num .three {
+  flex: 1;
+}
