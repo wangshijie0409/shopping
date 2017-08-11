@@ -11,9 +11,13 @@ render(){
                     <span>北京平谷大桃</span>
                 </div>
                 <img src={big}/>
+
             </div>
             <div className="two">
+
                     2222
+
+
             </div>
             <div className="three">
                 333

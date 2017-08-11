@@ -23,7 +23,6 @@ export default class List extends Component{
                         <li><Link to="/list/northeast" >华北特产</Link></li>
                         <li><Link to="/list/southChina">华南特产</Link></li>
                         <li><Link to="/list/other">其他地区</Link></li>
-
                     </ul>
                     <Route exact path="/list" component={Hot}/>
                     <Route path="/list/northChina" component={NorthChina}/>
@@ -35,5 +34,4 @@ export default class List extends Component{
         )
     }
 }
-
 import './index.less';

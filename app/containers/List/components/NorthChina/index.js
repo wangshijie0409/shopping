@@ -26,7 +26,7 @@ export default class Northeast extends Component{
         })
     }
     componentDidMount(){
-        this.ajaxReq({type:'华北特产'});
+        this.ajaxReq({type:'东北特产'});
     }
 
 render(){

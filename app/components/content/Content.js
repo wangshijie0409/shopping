@@ -16,7 +16,7 @@ class Content extends Component{
         }else{
             let id = this.props.match.params.id;
             this.setState({info:this.props.location.state});
-           // console.log(this.state.info,0)
+            console.log(this.state.info,0)
         }
 
     };

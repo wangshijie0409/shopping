@@ -7,7 +7,6 @@ import List from "../../components/List/index";
 import $ from 'jquery'
 import './index.less'
 import Content from "../../components/content/Content";
-
 export default class Home extends Component{
     constructor(){
         super()
@@ -45,6 +44,7 @@ export default class Home extends Component{
                 <div className="row header" style={{backgroundColor:"#eee",margin:0,padding:0}}>
                     <div className="col-xs-12" style={{margin:10}}>
                         <div className="col-xs-10">
+
                             <input ref='val' className="form-control" style={{borderRadius:17}} type="text" placeholder="搜索你想要的商品吧"/>
                         </div>
                         <div className="col-xs-2">

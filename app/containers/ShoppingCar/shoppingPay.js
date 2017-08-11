@@ -21,23 +21,24 @@ export default class ShoppingPay extends Component{
         this.pay_cancle=document.getElementsByClassName('pay_cancel')[0];
         //console.log('888888888',this.props.location.state)
         this.setState({goodsDetail:this.props.location.state});
-        // console.log(this.props.location.state);
+         //console.log(0,this.props.location.state);
     }
+    //确定结算
     handlePay=()=>{
         this.menu.style.display='block';
         $.ajax({
             method:'GET',
-            url:'http://192.168.43.26:3333/order/addOrder',
+            url:'http://47.93.47.208:3333/order/addOrder',
             dataType:'jsonp',
             jsonp:'cb',
             jsonpCallback:'fn',
             data:{
-                purchaser:'598a91ee49c30f015c95780f',
-                productName:this.state.goodsDetail._id,
+                purchaser:'598c15e3e6566936fc2690eb',//临时从数据库中获取到的用户id，对应的用户名为admin，暂时代表当前登陆的用户，正常情况这个值是根据当前登陆用户的信息来获取的
+                productName:this.props.location.state.id,
                 count:this.state.count
             },
             success:(res)=>{
-               // console.log(this);
+                // console.log(this);
                 if(res.code==1){
                     this.setState({orderNum:res.orderNumber});
                     //console.log(this.state.orderNum);
@@ -48,9 +49,12 @@ export default class ShoppingPay extends Component{
             }
         })
     };
+    //取消结算
+    handelCancel=()=>{
+        this.menu.style.display='none';
+    };
     handleClick = ()=>{
         let {id} = this.props.location.state;
-        //console.log(id);
         this.props.history.push({
             pathname:'/content/:'+id,
             state:this.props.location.state
@@ -58,7 +62,7 @@ export default class ShoppingPay extends Component{
     };
     handlePaySuccess=()=>{
         let orderNumber=this.state.orderNum;
-       // console.log(this.state.orderNum);
+        // console.log(this.state.orderNum);
         let {id} = this.props.location.state;
         $.ajax({
             method:'GET',
@@ -68,7 +72,7 @@ export default class ShoppingPay extends Component{
             jsonpCallback:'fn',
             data:{orderNumber},
             success:(res)=>{
-               // console.log(this);
+                // console.log(this);
                 if(res.code==1){
                     this.pay.style.display='none';
                     this.pay_success.style.display='block';
@@ -90,7 +94,7 @@ export default class ShoppingPay extends Component{
             <div>
                 {/* <Header title={this.state.header}/>*/}
                 <nav className="navbar navbar-default navbar-fixed-top">
-                    <p style={{fontSize:22,color:'black',fontWeight:'bold'}} className="text-center navbar-text"><span className="pull-left back" onClick={()=>history.back()} >&lt;</span>购物车</p>
+                    <p style={{fontSize:22,color:'black',fontWeight:'bold'}} className="text-center navbar-text"><span className="pull-left back" onClick={this.handleClick} >&lt;</span>购物车</p>
                 </nav>
                 <div className="order_detail  shopping_pay">
                     <ul>
@@ -106,7 +110,7 @@ export default class ShoppingPay extends Component{
                                             <span>{this.state.goodsDetail?'￥'+this.state.goodsDetail.price:''}</span>
                                             <div className="addCount">
                                                 <button className="btn" onClick={()=>{this.state.count>0?this.setState({count:this.state.count-1}):0}}>-</button>
-                                                <span className="order_detail_rightBottom_right">x1</span>
+                                                <span className="order_detail_rightBottom_right">+{this.state.count}</span>
                                                 <button className="btn" onClick={()=>{this.setState({count:this.state.count+1})}}>+</button>
                                             </div>
                                         </div>
@@ -128,7 +132,7 @@ export default class ShoppingPay extends Component{
                         <h3>确认付款</h3>
                         <h3>￥{this.state.goodsDetail?this.state.goodsDetail.price*this.state.count:0}</h3>
                         <div className="shoppingPay_btn">
-                            <button className="btn btn-warning pay_cancel">取消</button>
+                            <button onClick={this.handelCancel} className="btn btn-warning pay_cancel">取消</button>
                             <button onClick={this.handlePaySuccess} className="btn btn-primary pay_sure">确定</button>
                         </div>
                     </div>

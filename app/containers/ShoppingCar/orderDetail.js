@@ -34,19 +34,26 @@ export default class OrderDetail extends Component{
         })
     }
     handleClick=()=>{
-        this.props.history.push('/shoppingPay');
+        let {id} = this.props.location.state;
+        //this.props.history.push('/shoppingPay')
+            this.props.history.push({
+            pathname:'/content/:'+id,
+            state:this.props.location.state
+        })
     };
+
+
     render(){
-        console.log(this.state.goodsDetail);
+        //console.log(this.state.goodsDetail);
         return (
             <div>
                 <nav className="navbar navbar-default navbar-fixed-top">
-                    <p style={{fontSize:23,fontWeight:'bold',color:'black'}} className="text-center navbar-text"><span className="pull-left back" onClick={()=>history.back()} >&lt;</span>订单详情</p>
+                    <p style={{fontSize:23,fontWeight:'bold',color:'black'}} className="text-center navbar-text"><span className="pull-left back" onClick={this.handleClick} >&lt;</span>订单详情</p>
                 </nav>
                 <div className="order_detail">
                     <div className="order_detail_state">交易成功</div>
                     <section>
-                        <div  onClick={this.handleClick} className="order_detail_list">
+                        <div className="order_detail_list">
                             <div className="order_detail_top">
                                 <div className="order_detail_left">
                                     <img src="https://img-tmdetail.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/TB1aszpQVXXXXaFaXXXXXXXXXXX_!!0-item_pic.jpg_160x160q90.jpg" alt=""/>
@@ -65,13 +72,12 @@ export default class OrderDetail extends Component{
                             <p className="order_detail_price">实付款<span className="pull-right">￥99.9</span></p>
                         </div>
                         <ul>
-                            <li>订单编号：111</li>
-                            <li>交易时间：111</li>
+                            <li>订单编号：11377349186233765</li>
+                            <li>交易时间：{new Date().toLocaleDateString()}</li>
                             <li>创建时间：111</li>
                             <li>付款时间：111</li>
                         </ul>
                     </section>
-
                 </div>
             </div>
         )
