@@ -1,0 +1,101 @@
+.tab{
+  width:100%;
+  height:50px;
+  line-height:60px;
+  position: fixed;
+  top:50px;
+  background-color: #f8f8f8;
+  display: flex;
+  .tab-item{
+    float: left;
+    flex: 1;
+    text-align: center;
+    a{
+      color:#777;
+      text-decoration: none;
+    }
+    &.active{
+      border-bottom: 2px solid yellowgreen;
+    }
+  }
+}
+.shoppingCar_wrapper{
+  ul{
+    background-color: #f8f8f8;
+    overflow: hidden;
+  }
+  li{
+
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  padding-top: 100px;
+  padding-bottom:40px;
+  box-sizing: border-box;
+  .order_wrapper{
+    padding:15px 10px;
+    background-color: #fff;
+    display:flex;
+    .order_left{
+      flex:2;
+      padding-right: 10px;
+      img{
+        width:100%;
+      }
+    }
+    .order_content{
+      flex:5;
+      p{
+        line-height:20px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+      }
+
+    }
+    .order_right{
+      flex:1.5;
+      p{
+        float: right;
+      }
+      p.price{
+        color:red;
+        font-size:24px;
+      }
+      p.state_success{
+        color:green;
+      }
+      p.state_send{
+        color:blue;
+      }
+      p.state_error{
+        color:red;
+      }
+    }
+  }
+  .order_total{
+    width:100%;
+    float: right;
+    padding:0px 10px;
+    color:#ccc;
+    background-color: #ffffff;
+    //overflow: hidden;
+    border-bottom:1px solid #f8f8f8;
+    p{
+      height:20px;
+      line-height:20px;
+      float:right;
+    }
+  }
+  .order_btn{
+    width: 100%;
+    display: block;
+    background-color: #ffffff;
+    float: right;
+    padding: 10px;
+    button{
+      float: right;
+    }
+  }
+}
