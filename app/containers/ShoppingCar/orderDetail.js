@@ -10,29 +10,53 @@ import $ from 'jquery';
 export default class OrderDetail extends Component{
     constructor(){
         super();
-        this.state={header:'订单详情',goodsDetail:{orderNumber:null}}
+        this.state={header:'订单详情'};
     }
-    componentDidMount(){
-        this.setState({goodsDetail:this.props.location.state});
-        console.log(this.props.location.state);
-        $.ajax({
-            method:'GET',
-            url:'http://47.93.47.208:3333/order/orderDetail',
-            dataType:'jsonp',
-            jsonp:'cb',
-            jsonpCallback:'fn',
-            data:{
-                orderNumber:this.props.location.state.orderNumber
-            },
-            success:(res)=>{
-                this.setState({goodsDetail:res});
-                console.log(res);
-            },
-            error:function(err){
-                console.log(err);
-            }
-        })
+    componentWillMount(){
+        console.log(this.props.location.state.orderNumber);
+        setTimeout(()=>{
+            $.ajax({
+                method:'GET',
+                url:'http://47.93.47.208:3333/order/orderDetail',
+                dataType:'json',
+                data:{
+                    orderNumber:this.props.location.state.id
+                },
+                success:(res)=>{
+                    console.log(res);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        },300)
     }
+
+    // constructor(){
+    //     super();
+    //     this.state={header:'订单详情',goodsDetail:{orderNumber:null}};
+    // }
+    // componentDidMount(){
+    //     this.setState({goodsDetail:this.props.location.state});
+    //     console.log(this.props.location.state);
+    //     $.ajax({
+    //         method:'GET',
+    //         url:'http://192.168.43.26:3333/order/orderDetail',
+    //         dataType:'jsonp',
+    //         jsonp:'cb',
+    //         jsonpCallback:'fn',
+    //         data:{
+    //             orderNumber:this.props.location.state.orderNumber
+    //         },
+    //         success:(res)=>{
+    //             this.setState({goodsDetail:res});
+    //             console.log(res);
+    //         },
+    //         error:function(err){
+    //             console.log(err);
+    //         }
+    //     })
+    // }
     handleClick=()=>{
         let {id} = this.props.location.state;
         //this.props.history.push('/shoppingPay')

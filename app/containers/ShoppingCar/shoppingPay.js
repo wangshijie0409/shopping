@@ -21,7 +21,7 @@ export default class ShoppingPay extends Component{
         this.pay_cancle=document.getElementsByClassName('pay_cancel')[0];
         //console.log('888888888',this.props.location.state)
         this.setState({goodsDetail:this.props.location.state});
-         //console.log(0,this.props.location.state);
+         console.log(0,this.props.location.state);
     }
     //确定结算
     handlePay=()=>{
@@ -33,7 +33,7 @@ export default class ShoppingPay extends Component{
             jsonp:'cb',
             jsonpCallback:'fn',
             data:{
-                purchaser:'598c15e3e6566936fc2690eb',//临时从数据库中获取到的用户id，对应的用户名为admin，暂时代表当前登陆的用户，正常情况这个值是根据当前登陆用户的信息来获取的
+                purchaser:JSON.parse(localStorage.getItem('myInfo'))._id,//临时从数据库中获取到的用户id，对应的用户名为admin，暂时代表当前登陆的用户，正常情况这个值是根据当前登陆用户的信息来获取的
                 productName:this.props.location.state.id,
                 count:this.state.count
             },
@@ -78,7 +78,7 @@ export default class ShoppingPay extends Component{
                     this.pay_success.style.display='block';
                     setTimeout(()=>{
                         this.props.history.push({
-                            pathname:'/orderDetail/:'+id,
+                            pathname:'/orderDetail/'+orderNumber,
                             state:{...this.state.goodsDetail,orderNumber}
                         });
                     },3000)
@@ -88,7 +88,7 @@ export default class ShoppingPay extends Component{
                 console.log(err);
             }
         })
-    }
+    };
     render(){
         return (
             <div>

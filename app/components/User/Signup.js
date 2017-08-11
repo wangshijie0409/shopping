@@ -20,26 +20,22 @@ export default class Signup extends Component{
             this.refs.password1.onfocus;
             this.refs.password1.value = null;
         }else {
+            let formData = document.forms.namedItem("fileInfo");
+            let oData = new FormData(formData);
             $.ajax({
-                url:`http://192.168.43.26:3333/user/signUp`,
-                method:'POST',
-                dateType:'jsonp',
-                jsonp:'cb',
-                jsonpCallback:"fn",
-                data:{
-                    username,
-                    password:password1,
-                    avatar,
-                    email,
-                },
+                url:'http://47.93.47.208:3333/user/signUp',
+                type:'post',
+                data:oData,
+                processData: false,  // 告诉jQuery不要去处理发送的数据
+                contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
                 error:function (e) {
                     console.log("error", e);
                 },
-                success:function (res) {
-                    if(res.code==1){
-                        history.push("/login");
+                success:(res)=>{
+                    if(JSON.parse(res).code){
+                        this.props.history.push("/login");
                     }else {
-                        console.log("msg");
+                        console.log(res);
                     }
                 }
             })
@@ -49,12 +45,10 @@ export default class Signup extends Component{
         return (
             <div className="row body" >
                 <div className="col-xs-12">
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                        <p style={{fontSize:20}} className="text-center navbar-text"><span className="pull-left back" onClick={()=>history.back()} >&lt;</span>注册</p>
-                    </nav>
+                    <Header title={this.state.title}/>
                 </div>
                 <div className="">
-                    <form encType="multipart/form-data" method="post" className="form-horizontal">
+                    <form encType="multipart/form-data" method="post" className="form-horizontal" name="fileInfo">
                         <div className="form-group user_top">
                             <label style={{lineHeight:2.5}} htmlFor="username" className="col-xs-4 control-label text-right">用户名:</label>
                             <div className="col-xs-8 input-group">
@@ -79,7 +73,7 @@ export default class Signup extends Component{
                                     <span className="input-group-addon">
                                         <span className="glyphicon glyphicon-lock"></span>
                                     </span>
-                                <input ref="password11" required type="password" placeholder="请输入密码" className="form-control" id="password" name="password"/>
+                                <input ref="password11" required type="password" placeholder="请输入密码" className="form-control" id="password" name="password2"/>
                             </div>
                         </div>
                         <div className="form-group mail_top">

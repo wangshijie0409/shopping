@@ -32,13 +32,14 @@ export default class ShoppingCar extends Component{
                         <ul onClick={(event)=>this.handleClick(event)} className="tab">
                             <li className="tab-item active"><Link to="/shoppingCar">全部</Link></li>
                             <li className="tab-item"><Link to="/shoppingCar/orderPay">待付款</Link></li>
-                            <li className="tab-item"><Link to="/shoppingCar/orderSend">待发货</Link></li>
+                            <li className="tab-item"><Link to="/shoppingCar/orderSend">已完成</Link></li>
                         </ul>
                     </div>
 
                         <Route exact path="/shoppingCar" component={MyOrder}/>
                         <Route path="/shoppingCar/orderPay" component={OrderPay}/>
                         <Route path="/shoppingCar/orderSend" component={OrderSend}/>
+
                 </div>
             </Router>
         )

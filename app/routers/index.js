@@ -22,8 +22,8 @@ export default class RouterMap extends Component{
                 <Router>
                     <div className="footerBox">
                         <Route render={({match,location})=>{
-                            console.log(match);
-                            console.log(location);//
+                            //console.log(match);
+                           // console.log(location);
                             return ['/','/list','/shoppingCar','/myCenter'].includes(location.pathname)? <ul className="navList" style={{margin:0}}>
 
                                 <li><Link to="/"><i className="iconfont icon-wxbzhuye"></i>首页</Link></li>
