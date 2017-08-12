@@ -36,10 +36,10 @@ export default class Slider extends Component{
 
                 </ReactSwipe>
                 <ul className="dots">
-                    <li className={this.state.index==0?"active":""}></li>
-                    <li className={this.state.index==1?"active":""}></li>
-                    <li className={this.state.index==2?"active":""}></li>
-                </ul>
+                <li className={this.state.index==0?"active":""}></li>
+                <li className={this.state.index==1?"active":""}></li>
+                <li className={this.state.index==2?"active":""}></li>
+            </ul>
             </div>
         )
     }

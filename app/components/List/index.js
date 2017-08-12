@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
+import $ from 'jquery'
 import {HashRouter as Router, Route,Link,Switch,withRouter} from "react-router-dom";
 import {hashHistory} from 'react-router';
-import $ from 'jquery'
 import './index.less'
 class List extends Component {
     constructor(){
@@ -28,11 +28,10 @@ class List extends Component {
             }
         });
     }
-
     handleClick = (value) => {
-         //console.log(value);
+         console.log(value);
         this.props.history.push({
-                pathname: '/content/:'+value._id,
+                pathname: '/content/'+value._id,
                 state: {
                     id:value._id,
                     productImg:value.productImg,
@@ -42,7 +41,6 @@ class List extends Component {
             },
         });
     };
-
     /*format=(obj)=>{
         var str="";
         for(var key in obj){
@@ -52,7 +50,6 @@ class List extends Component {
     };*/
     render() {
 
-       // console.log(hashHistory);
         return (
             <div className="container">
                 <div className="patch-pull">~~精品推荐~~</div>
